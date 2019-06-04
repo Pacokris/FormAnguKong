@@ -8,9 +8,9 @@ import { Observable, throwError } from 'rxjs';
 })
 export class IdentiteService {
 
-  public identiteConnected;
+  public identiteConnected: Object;
 
-  private baseUrl = `http://localhost:8090/certification/identities`;
+  private baseUrl = `http://localhost:9091/certification/identities`;
   private baseUrl2 = `http://da058-certification-service.apps.foundry.sii24.pole-emploi.intra/certification/identities`;
   private baseUrl3 = `http://kong-ee-api.swcx0010.sii24.pole-emploi.intra/requeteCertification`;
 
@@ -22,10 +22,9 @@ export class IdentiteService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json;charset=UTF-8' })
     };
 
-    let body = identite;
+    let body = JSON.stringify({ identite });
     console.log(body);
 
-
-    return this.httpClient.post(`${this.baseUrl}`, `${body}`, httpOptions)
+    return this.httpClient.post(`${this.baseUrl}`, body, httpOptions)
   }
 }

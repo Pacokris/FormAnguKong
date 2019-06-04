@@ -51,61 +51,65 @@
           [(ngModel)]="model.code_sexe" code_lieu_naissance="code_sexe">
       </div>
 
-      <div class="form-group">
+      <div class="form-group test">
         <label for="libelle_departement">libelle_departement</label>
         <input formControlName="libelle_departement" type="text" class="form-control" id="libelle_departement" required
           [(ngModel)]="model.libelle_departement">
       </div>
 
-      <div class="form-group">
+      <div class="form-group test">
         <label for="libelle_commune">libelle_commune</label>
         <input formControlName="libelle_commune" type="text" class="form-control" id="libelle_commune" required
           [(ngModel)]="model.libelle_commune" code_lieu_naissance="libelle_commune">
       </div>
 
-      <div class="form-group">
+      <div class="form-group test">
         <label for="libelle_pays">libelle_pays</label>
         <input formControlName="libelle_pays" type="text" class="form-control" id="libelle_pays" required
           [(ngModel)]="model.libelle_pays" code_lieu_naissance="libelle_pays">
       </div>
 
-      <div class="form-group">
+      <div class="form-group test">
         <label for="libelle_localite">libelle_localite</label>
         <input formControlName="libelle_localite" type="text" class="form-control" id="libelle_localite" required
           [(ngModel)]="model.libelle_localite" code_lieu_naissance="libelle_localite">
       </div>
 
-      <div class="form-group">
+      <div class="form-group test">
         <label for="nom_marital">nom_marital</label>
         <input formControlName="nom_marital" type="text" class="form-control" id="nom_marital" required
           [(ngModel)]="model.nom_marital" code_lieu_naissance="nom_marital">
       </div>
 
-      <div class="form-group">
+      <div class="form-group test">
         <label for="nom_naissance_pere">nom_naissance_pere</label>
         <input formControlName="nom_naissance_pere" type="text" class="form-control" id="nom_naissance_pere" required
           [(ngModel)]="model.nom_naissance_pere" code_lieu_naissance="nom_naissance_pere">
       </div>
 
-      <div class="form-group">
+      <div class="form-group test">
         <label for="liste_prenoms_pere">liste_prenoms_pere</label>
         <input formControlName="liste_prenoms_pere" type="text" class="form-control" id="liste_prenoms_pere" required
           [(ngModel)]="model.liste_prenoms_pere" code_lieu_naissance="liste_prenoms_pere">
       </div>
 
-      <div class="form-group">
+      <div class="form-group test">
         <label for="nom_naissance_mere">nom_naissance_mere</label>
         <input formControlName="nom_naissance_mere" type="text" class="form-control" id="nom_naissance_mere" required
           [(ngModel)]="model.nom_naissance_mere" code_lieu_naissance="nom_naissance_mere">
       </div>
 
-      <div class="form-group">
+      <div class="form-group test">
         <label for="liste_prenoms_mere">liste_prenoms_mere</label>
         <input formControlName="liste_prenoms_mere" type="text" class="form-control" id="liste_prenoms_mere" required
           [(ngModel)]="model.liste_prenoms_mere" code_lieu_naissance="liste_prenoms_mere">
       </div>
 
-      <button *ngIf=(!identiteCree) type="submit" class="btn btn-success">Submit</button>
+      <div class="button">
+        <button *ngIf=(!identiteCree) type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+        <!-- <button *ngIf=(!identiteCree) type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+        <button *ngIf=(!identiteCree) type="submit" class="btn btn-warning btn-lg btn-block">Submit</button> -->
+      </div>
 
     </form>
 

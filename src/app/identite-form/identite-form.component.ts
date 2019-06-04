@@ -54,6 +54,7 @@ export class IdentiteFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.createIdentite.invalid) {
+      console.log("GG");
       return;
     }
 
@@ -79,18 +80,18 @@ export class IdentiteFormComponent implements OnInit {
     );
 
     this.identiteService.createIdentite(newIdentite)
-    .subscribe(data => {
-      this.identiteService.identiteConnected = data;
-    },
-
-      error => {
-        this.submitted = false
-      }
-    );
-}
+      .subscribe(data => {
+        this.identiteService.identiteConnected = data;
+        console.log("Goaaaaaaaaaaaaaaaaaaaaaaaaaal");
+      },
+        error => {
+          this.submitted = false
+          console.log("WTF");
+        }
+      );
+  }
 
   relance() {
     this.initialisationForm();
   }
 }
-
