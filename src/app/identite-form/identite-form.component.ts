@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Identite } from '../identite-model/identite';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IdentiteService } from '../identite-service/identite.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -29,33 +29,29 @@ export class IdentiteFormComponent implements OnInit {
     this.submitted = false;
     this.identiteCree = false;
     this.createIdentite = this.formBuilder.group({
-      code_lieu_naissance: [69389],
-      code_pays_naissance: ['CDN'],
-      date_naissance: [15121999],
-      num_assure: [1920845625856],
-      nom_naissance: ['string'],
-      liste_prenoms: ['string'],
-      nom_usage: ['string'],
-      code_sexe: [0],
-      libelle_departement: ['string'],
-      libelle_commune: ['string'],
-      libelle_pays: ['string'],
-      libelle_localite: ['string'],
-      nom_marital: ['string'],
-      nom_naissance_pere: ['string'],
-      liste_prenoms_pere: ['string'],
-      nom_naissance_mere: ['string'],
-      liste_prenoms_mere: ['string']
-    })
+      code_lieu_naissance: [69389, Validators.required],
+      code_pays_naissance: ['CDN', Validators.required],
+      date_naissance: [15121999, Validators.required],
+      num_assure: [1920845625856, Validators.required],
+      nom_naissance: ['string', Validators.required],
+      liste_prenoms: ['string', Validators.required],
+      nom_usage: ['string', Validators.required],
+      code_sexe: [0, Validators.required],
+      libelle_departement: ['string', Validators.required],
+      libelle_commune: ['string', Validators.required],
+      libelle_pays: ['string', Validators.required],
+      libelle_localite: ['string', Validators.required],
+      nom_marital: ['string', Validators.required],
+      nom_naissance_pere: ['string', Validators.required],
+      liste_prenoms_pere: ['string', Validators.required],
+      nom_naissance_mere: ['string', Validators.required],
+      liste_prenoms_mere: ['string', Validators.required],
+    });
   }
-
   get f() { return this.createIdentite.controls; }
 
-  onSubmit() {
+  onSubmit(buttonType): void {
     this.submitted = true;
-    if (this.createIdentite.invalid) {
-      return;
-    }
 
     const formValue = this.createIdentite.value;
     const newIdentite = new Identite(
@@ -78,19 +74,55 @@ export class IdentiteFormComponent implements OnInit {
       formValue['liste_prenoms_mere']
     );
 
-    this.identiteService.createIdentite(newIdentite)
-      .subscribe(data => {
-        this.identiteService.identiteConnected = data;
-        console.log('redirecting');
-      },
-        error => {
+    if (buttonType === "createIdentite1") {
+      console.log(buttonType)
+      this.identiteService.createIdentite1(newIdentite)
+        .subscribe(data => {
+          this.identiteService.identiteConnected = data;
+          console.log('redirecting');
+        }, _error => {
           this.submitted = false
           console.log("WTF");
           this.router.navigate(['/identite-invalide']);
         }
-      );
-    if (this.identiteCree = true) {
-      this.router.navigate(['/identite-valide']);
+        );
+      if (this.identiteCree = true) {
+        this.router.navigate(['/identite-valide']);
+      }
+    }
+
+    if (buttonType === "createIdentite2") {
+      console.log(buttonType)
+      this.identiteService.createIdentite2(newIdentite)
+        .subscribe(data => {
+          this.identiteService.identiteConnected = data;
+          console.log('redirecting');
+        }, _error => {
+          this.submitted = false
+          console.log("WTF");
+          this.router.navigate(['/identite-invalide']);
+        }
+        );
+      if (this.identiteCree = true) {
+        this.router.navigate(['/identite-valide']);
+      }
+    }
+
+    if (buttonType === "createIdentite3") {
+      console.log(buttonType)
+      this.identiteService.createIdentite3(newIdentite)
+        .subscribe(data => {
+          this.identiteService.identiteConnected = data;
+          console.log('redirecting');
+        }, _error => {
+          this.submitted = false
+          console.log("WTF");
+          this.router.navigate(['/identite-invalide']);
+        }
+        );
+      if (this.identiteCree = true) {
+        this.router.navigate(['/identite-valide']);
+      }
     }
   }
 }
