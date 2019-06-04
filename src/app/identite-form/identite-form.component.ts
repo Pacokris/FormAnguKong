@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Identite } from '../identite-model/identite';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { IdentiteService } from '../identite-service/identite.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-identite-form',
@@ -18,7 +18,8 @@ export class IdentiteFormComponent implements OnInit {
   submitted = false;
   identiteCree = false;
 
-  constructor(private formBuilder: FormBuilder, private identiteService: IdentiteService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private identiteService: IdentiteService, private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.initialisationForm();
@@ -28,7 +29,6 @@ export class IdentiteFormComponent implements OnInit {
     this.submitted = false;
     this.identiteCree = false;
     this.createIdentite = this.formBuilder.group({
-      raic_service: [false],
       code_lieu_naissance: [69389],
       code_pays_naissance: ['CDN'],
       date_naissance: [15121999],
@@ -54,7 +54,6 @@ export class IdentiteFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.createIdentite.invalid) {
-      console.log("GG");
       return;
     }
 
@@ -82,16 +81,16 @@ export class IdentiteFormComponent implements OnInit {
     this.identiteService.createIdentite(newIdentite)
       .subscribe(data => {
         this.identiteService.identiteConnected = data;
-        console.log("Goaaaaaaaaaaaaaaaaaaaaaaaaaal");
+        console.log('redirecting');
       },
         error => {
           this.submitted = false
           console.log("WTF");
+          this.router.navigate(['/identite-invalide']);
         }
       );
-  }
-
-  relance() {
-    this.initialisationForm();
+    if (this.identiteCree = true) {
+      this.router.navigate(['/identite-valide']);
+    }
   }
 }

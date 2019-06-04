@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { IdentiteFormComponent } from './identite-form/identite-form.component';
+import { IdentiteValideComponent } from './identite-valide/identite-valide.component';
+import { IdentiteInvalideComponent } from './identite-invalide/identite-invalide.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: IdentiteFormComponent },
+  { path: 'identite-form', component: IdentiteFormComponent },
+  { path: 'identite-valide', component: IdentiteValideComponent },
+  { path: 'identite-invalide', component: IdentiteInvalideComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
