@@ -54,8 +54,8 @@ export class IdentiteService {
   public identiteLogin(id) {
     const loginUrl2 = '&realm=individu&response_type=code&scope=profile&redirect_uri=http://localhost:8080/applitest';
     const httpOptions = {
-      headers: new HttpHeaders({'Access-Control-Allow-Origin': 'http://localhost:4200', 'Content-Type': 'application/json;charset=UTF-8'})
+      headers: new HttpHeaders({'Access-Control-Allow-Origin': '*'}),
     };
-    return this.httpClient.get(`${this.loginUrl1}` + id + loginUrl2, httpOptions );
+    return this.httpClient.get(`${this.loginUrl1}` + id + loginUrl2, httpOptions);
   }
 }
