@@ -1,0 +1,31 @@
+<div style="text-align:center">
+  <img width="200" alt="Angular Logo"
+       src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <img width="200" alt="Kong Logo" src="../assets/kong.png">
+</div>
+<div class="container">
+  <h1>Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="id">Id</label>
+      <input type="text" formControlName="id" class="form-control" id="id" required
+             [(ngModel)]="model.id"
+             [ngClass]="{ 'is-invalid': submitted && f.id.errors }"/>
+      <div *ngIf="submitted && f.id.errors" class="invalid-feedback">
+        <div *ngIf="f.id.errors.required">Id is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" formControlName="password" class="form-control" id="password" required
+             [(ngModel)]="model.password"
+             [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Login</button>
+    </div>
+  </form>
+</div>

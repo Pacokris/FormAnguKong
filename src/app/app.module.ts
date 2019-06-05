@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { IdentiteFormComponent } from './identite-form/identite-form.component';
 import { IdentiteValideComponent } from './identite-valide/identite-valide.component';
 import { IdentiteInvalideComponent } from './identite-invalide/identite-invalide.component';
+import { IdentiteLoginComponent } from './identite-login/identite-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IdentiteFormComponent,
     IdentiteValideComponent,
-    IdentiteInvalideComponent
+    IdentiteInvalideComponent,
+    IdentiteLoginComponent
   ],
   imports: [
     BrowserModule,

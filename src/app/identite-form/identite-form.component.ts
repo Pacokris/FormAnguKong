@@ -23,12 +23,6 @@ export class IdentiteFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initialisationForm();
-  }
-
-  initialisationForm() {
-    this.submitted = false;
-    this.identiteCree = false;
     this.createIdentite = this.formBuilder.group({
       code_lieu_naissance: [69389, Validators.required],
       code_pays_naissance: ['CDN', Validators.required],
@@ -60,6 +54,7 @@ export class IdentiteFormComponent implements OnInit {
     if (this.createIdentite.invalid) {
       this.router.navigate(['/identite-invalide']);
     }
+
 
     const formValue = this.createIdentite.value;
     const identiteTrue = this.identiteCree = true;

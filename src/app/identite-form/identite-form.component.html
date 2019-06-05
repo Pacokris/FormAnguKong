@@ -1,20 +1,14 @@
-<div style="text-align:center">
-  <img width="200" alt="Angular Logo"
-       src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-  <img width="200" alt="Kong Logo" src="../assets/kong.png">
-</div>
 <div class="container">
   <div [hidden]="submitted">
     <h1>Identité</h1>
-    <form [formGroup]="createIdentite" (ngSubmit)="onSubmit(createIdentite)">
+    <form [formGroup]="createIdentite" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="code_lieu_naissance">code_lieu_naissance</label>
         <input formControlName="code_lieu_naissance" type="text" class="form-control" id="code_lieu_naissance" required
                [(ngModel)]="model.code_lieu_naissance"
                [ngClass]="{ 'is-invalid': submitted && f.code_lieu_naissance.errors }"/>
         <div *ngIf="submitted && f.code_lieu_naissance.errors" class="invalid-feedback">
-          <div *ngIf="f.code_lieu_naissance.errors.required">champs requis</div>
-          <div *ngIf="f.code_lieu_naissance.errors.pattern">erreur saisie</div>
+          <div *ngIf="f.code_lieu_naissance.errors.required">code_lieu_naissance is required</div>
         </div>
       </div>
 
