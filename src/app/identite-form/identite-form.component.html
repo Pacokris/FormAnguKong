@@ -6,7 +6,7 @@
 <div class="container">
   <div [hidden]="submitted">
     <h1>Identité</h1>
-    <form [formGroup]="createIdentite" (ngSubmit)="onSubmit(createIdentite)" #identiteForm="ngForm">
+    <form [formGroup]="createIdentite" (ngSubmit)="onSubmit(createIdentite)">
       <div class="form-group">
         <label for="code_lieu_naissance">code_lieu_naissance</label>
         <input formControlName="code_lieu_naissance" type="text" class="form-control" id="code_lieu_naissance" required
