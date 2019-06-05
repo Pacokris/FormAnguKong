@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Identite } from '../identite-model/identite';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IdentiteService } from '../identite-service/identite.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Identite} from '../identite-model/identite';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {IdentiteService} from '../identite-service/identite.service';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-identite-form',
@@ -19,7 +19,8 @@ export class IdentiteFormComponent implements OnInit {
   identiteCree = false;
 
   constructor(private formBuilder: FormBuilder, private identiteService: IdentiteService, private route: ActivatedRoute,
-    private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.initialisationForm();
@@ -48,79 +49,84 @@ export class IdentiteFormComponent implements OnInit {
       liste_prenoms_mere: ['string', Validators.required],
     });
   }
-  get f() { return this.createIdentite.controls; }
+
+  get f() {
+    return this.createIdentite.controls;
+  }
 
   onSubmit(buttonType): void {
     this.submitted = true;
 
+    if (this.createIdentite.invalid) {
+      this.router.navigate(['/identite-invalide']);
+    }
+
     const formValue = this.createIdentite.value;
+    const identiteTrue = this.identiteCree = true;
     const newIdentite = new Identite(
-      formValue['code_lieu_naissance'],
-      formValue['code_pays_naissance'],
-      formValue['date_naissance'],
-      formValue['num_assure'],
-      formValue['nom_naissance'],
-      formValue['liste_prenoms'],
-      formValue['nom_usage'],
-      formValue['code_sexe'],
-      formValue['libelle_departement'],
-      formValue['libelle_commune'],
-      formValue['libelle_pays'],
-      formValue['libelle_localite'],
-      formValue['nom_marital'],
-      formValue['nom_naissance_pere'],
-      formValue['liste_prenoms_pere'],
-      formValue['nom_naissance_mere'],
-      formValue['liste_prenoms_mere']
+      formValue.code_lieu_naissance,
+      formValue.code_pays_naissance,
+      formValue.date_naissance,
+      formValue.num_assure,
+      formValue.nom_naissance,
+      formValue.liste_prenoms,
+      formValue.nom_usage,
+      formValue.code_sexe,
+      formValue.libelle_departement,
+      formValue.libelle_commune,
+      formValue.libelle_pays,
+      formValue.libelle_localite,
+      formValue.nom_marital,
+      formValue.nom_naissance_pere,
+      formValue.liste_prenoms_pere,
+      formValue.nom_naissance_mere,
+      formValue.liste_prenoms_mere
     );
 
-    if (buttonType === "createIdentite1") {
-      console.log(buttonType)
+    if (buttonType === 'createIdentite1') {
       this.identiteService.createIdentite1(newIdentite)
         .subscribe(data => {
-          this.identiteService.identiteConnected = data;
-          console.log('redirecting');
-        }, _error => {
-          this.submitted = false
-          console.log("WTF");
-          this.router.navigate(['/identite-invalide']);
-        }
+            this.identiteService.identiteConnected = data;
+            // tslint:disable-next-line:variable-name
+          }, _error => {
+            this.submitted = false;
+            this.router.navigate(['/identite-invalide']);
+          }
         );
-      if (this.identiteCree = true) {
+      // tslint:disable-next-line:no-conditional-assignment
+      if (identiteTrue) {
         this.router.navigate(['/identite-valide']);
       }
     }
 
-    if (buttonType === "createIdentite2") {
-      console.log(buttonType)
+    if (buttonType === 'createIdentite2') {
       this.identiteService.createIdentite2(newIdentite)
         .subscribe(data => {
-          this.identiteService.identiteConnected = data;
-          console.log('redirecting');
-        }, _error => {
-          this.submitted = false
-          console.log("WTF");
-          this.router.navigate(['/identite-invalide']);
-        }
+            this.identiteService.identiteConnected = data;
+            // tslint:disable-next-line:variable-name
+          }, _error => {
+            this.submitted = false;
+            this.router.navigate(['/identite-invalide']);
+          }
         );
-      if (this.identiteCree = true) {
+      // tslint:disable-next-line:no-conditional-assignment
+      if (identiteTrue) {
         this.router.navigate(['/identite-valide']);
       }
     }
 
-    if (buttonType === "createIdentite3") {
-      console.log(buttonType)
+    if (buttonType === 'createIdentite3') {
       this.identiteService.createIdentite3(newIdentite)
         .subscribe(data => {
-          this.identiteService.identiteConnected = data;
-          console.log('redirecting');
-        }, _error => {
-          this.submitted = false
-          console.log("WTF");
-          this.router.navigate(['/identite-invalide']);
-        }
+            this.identiteService.identiteConnected = data;
+            // tslint:disable-next-line:variable-name
+          }, _error => {
+            this.submitted = false;
+            this.router.navigate(['/identite-invalide']);
+          }
         );
-      if (this.identiteCree = true) {
+      // tslint:disable-next-line:no-conditional-assignment
+      if (identiteTrue) {
         this.router.navigate(['/identite-valide']);
       }
     }
