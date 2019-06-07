@@ -6,11 +6,11 @@ import { IdentiteInvalideComponent } from './identite-invalide/identite-invalide
 import {IdentiteLoginComponent} from './identite-login/identite-login.component';
 
 const routes: Routes = [
-  { path: '', component: IdentiteFormComponent },
   { path: 'identite-form', component: IdentiteFormComponent },
   { path: 'identite-valide', component: IdentiteValideComponent },
   { path: 'identite-invalide', component: IdentiteInvalideComponent },
-  { path: 'identite-login', component: IdentiteLoginComponent}
+  { path: 'identite-login', component: IdentiteLoginComponent},
+  { path: '**', component: IdentiteFormComponent }
 ];
 
 @NgModule({
