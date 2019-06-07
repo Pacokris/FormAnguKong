@@ -3,6 +3,9 @@ import {Identite} from '../identite-model/identite';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {IdentiteService} from '../identite-service/identite.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Get} from '../identite-model/get';
 
 @Component({
   selector: 'app-identite-form',
@@ -18,8 +21,11 @@ export class IdentiteFormComponent implements OnInit {
   submitted = false;
   identiteCree = false;
 
+  private get: Get[] = [];
+  private getObservable: Observable<any[]>;
+
   constructor(private formBuilder: FormBuilder, private identiteService: IdentiteService, private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router, private httpClient: HttpClient) {
   }
 
   ngOnInit() {
@@ -125,5 +131,12 @@ export class IdentiteFormComponent implements OnInit {
         this.router.navigate(['/identite-valide']);
       }
     }
+  }
+
+  getTest() {
+    this.httpClient.get(`http://kong-ee-api.swcx0010.sii24.pole-emploi.intra/da058`).subscribe((res: any[]) => {
+      console.log(res);
+      this.get = res;
+    });
   }
 }

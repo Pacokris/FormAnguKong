@@ -197,5 +197,11 @@
         </button>
       </div>
     </form>
+    <button class="btn btn-success btn-lg btn-block" (click)="getTest()">GET</button>
+    <li *ngFor="let kong of getObservable | async">
+      -- name: {{kong.name}}
+      -- description: {{kong.description}}
+      -- version: {{kong.version}}
+    </li>
   </div>
 </div>
