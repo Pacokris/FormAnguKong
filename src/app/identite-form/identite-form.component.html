@@ -187,7 +187,7 @@
 
       <div class="button">
         <button *ngIf=(!identiteCree) type="button" (click)="onSubmit('createIdentite1')"
-                class="btn btn-danger btn-lg btn-block">Localhost
+                class="btn btn-success btn-lg btn-block">Localhost
         </button>
         <button *ngIf=(!identiteCree) type="button" (click)="onSubmit('createIdentite2')"
                 class="btn btn-primary btn-lg btn-block">da058
@@ -195,12 +195,12 @@
         <button *ngIf=(!identiteCree) type="button" (click)="onSubmit('createIdentite3')"
                 class="btn btn-warning btn-lg btn-block">Kong
         </button>
-        <button class="btn btn-success btn-lg btn-block" (click)="getTest()">Get / Kong</button>
-        <li *ngFor="let kong of getObservable | async">
-          -- name: {{kong.name}}
-          -- description: {{kong.description}}
-          -- version: {{kong.version}}
-        </li>
+<!--        <button class="btn btn-success btn-lg btn-block" (click)="getTest()">Get / Kong</button>-->
+<!--        <li *ngFor="let kong of getObservable | async">-->
+<!--          &#45;&#45; name: {{kong.name}}-->
+<!--          &#45;&#45; description: {{kong.description}}-->
+<!--          &#45;&#45; version: {{kong.version}}-->
+<!--        </li>-->
       </div>
     </form>
 
