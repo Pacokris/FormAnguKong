@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { IdentiteFormComponent } from './identite-form/identite-form.component';
 import { IdentiteValideComponent } from './identite-valide/identite-valide.component';
 import { IdentiteInvalideComponent } from './identite-invalide/identite-invalide.component';

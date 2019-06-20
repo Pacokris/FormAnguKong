@@ -1,16 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {Identite} from '../identite-model/identite';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {IdentiteService} from '../identite-service/identite.service';
-import {Router, ActivatedRoute} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Get} from '../identite-model/get';
+import { Component, OnInit } from '@angular/core';
+import { Identite } from '../identite-model/identite';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { IdentiteService } from '../identite-service/identite.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-identite-form',
   templateUrl: './identite-form.component.html',
-  styleUrls: ['./identite-form.component.css']
+  styleUrls: ['./identite-form.component.css'],
 })
 export class IdentiteFormComponent implements OnInit {
 
@@ -21,12 +20,7 @@ export class IdentiteFormComponent implements OnInit {
   submitted = false;
   identiteCree = false;
 
-  private get: Get[] = [];
-  private getObservable: Observable<any[]>;
-
-  constructor(private formBuilder: FormBuilder, private identiteService: IdentiteService, private route: ActivatedRoute,
-              private router: Router, private httpClient: HttpClient) {
-  }
+  constructor(private formBuilder: FormBuilder, private identiteService: IdentiteService, private router: Router) { }
 
   ngOnInit() {
     this.createIdentite = this.formBuilder.group({
@@ -59,8 +53,8 @@ export class IdentiteFormComponent implements OnInit {
 
     if (this.createIdentite.invalid) {
       this.router.navigate(['/identite-invalide']);
+      console.log("HOULAAAAAA")
     }
-
 
     const formValue = this.createIdentite.value;
     const identiteTrue = this.identiteCree = true;
@@ -85,58 +79,61 @@ export class IdentiteFormComponent implements OnInit {
     );
 
     if (buttonType === 'createIdentite1') {
+      console.log("je passe par la");
       this.identiteService.createIdentite1(newIdentite)
         .subscribe(data => {
-            this.identiteService.identiteConnected = data;
-            // tslint:disable-next-line:variable-name
-          }, _error => {
-            this.submitted = false;
-            this.router.navigate(['/identite-invalide']);
-          }
+          this.identiteService.identiteConnected = data;
+          console.log(data);
+        }, _error => {
+          this.submitted = false;
+          this.router.navigate(['/identite-invalide']);
+        }
         );
-      // tslint:disable-next-line:no-conditional-assignment
       if (identiteTrue) {
         this.router.navigate(['/identite-valide']);
+        console.log("et la");
       }
     }
 
     if (buttonType === 'createIdentite2') {
+      console.log("je passe par la");
       this.identiteService.createIdentite2(newIdentite)
         .subscribe(data => {
-            this.identiteService.identiteConnected = data;
-            // tslint:disable-next-line:variable-name
-          }, _error => {
-            this.submitted = false;
-            this.router.navigate(['/identite-invalide']);
-          }
+          this.identiteService.identiteConnected = data;
+          console.log(data);
+        }, _error => {
+          this.submitted = false;
+          this.router.navigate(['/identite-invalide']);
+        }
         );
-      // tslint:disable-next-line:no-conditional-assignment
       if (identiteTrue) {
         this.router.navigate(['/identite-valide']);
+        console.log("et la");
       }
     }
 
     if (buttonType === 'createIdentite3') {
+      console.log("je passe par la");
       this.identiteService.createIdentite3(newIdentite)
         .subscribe(data => {
-            this.identiteService.identiteConnected = data;
-            // tslint:disable-next-line:variable-name
-          }, _error => {
-            this.submitted = false;
-            this.router.navigate(['/identite-invalide']);
-          }
+          this.identiteService.identiteConnected = data;
+          console.log(data);
+        }, _error => {
+          console.log("ICI AUSSI");
+          this.submitted = false;
+          this.router.navigate(['/identite-invalide']);
+        }
         );
-      // tslint:disable-next-line:no-conditional-assignment
       if (identiteTrue) {
         this.router.navigate(['/identite-valide']);
+        console.log("et la");
       }
     }
   }
-
   getTest() {
-    this.httpClient.get(`http://kong-ee-api.swcx0010.sii24.pole-emploi.intra/da058`).subscribe((res: any[]) => {
-      console.log(res);
-      this.get = res;
-    });
+  };
+
+  getPe() {
+    return `https://authentification-candidat-r.pe-qvr.fr/connexion/XUI/#login/&realm=%2Findividu&goto=https%3A%2F%2Fauthentification-candidat-r.pe-qvr.fr%3A443%2Fconnexion%2Foauth2%2Fauthorize%3Fclient_id%3Dagent_kong_oidc%26realm%3Dindividu%26response_type%3Dcode%26scope%3Dprofile%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A4200`;
   }
 }

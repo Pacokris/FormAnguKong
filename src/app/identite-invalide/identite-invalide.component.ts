@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-identite-invalide',
@@ -8,8 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class IdentiteInvalideComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,
-    private router: Router) { }
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
