@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {IdentiteService} from '../identite-service/identite.service';
-import {IdentiteLogin} from '../identite-model/identiteLogin';
+import {IdentiteService} from '../../service/identite-service/identite.service';
+import {IdentiteLogin} from '../../model/identite-model/identiteLogin';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

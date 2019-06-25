@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Identite } from '../identite-model/identite';
+import { Identite } from '../../model/identite-model/identite';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IdentiteService } from '../identite-service/identite.service';
+import { IdentiteService } from '../../service/identite-service/identite.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
