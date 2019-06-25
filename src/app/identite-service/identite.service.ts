@@ -18,28 +18,6 @@ export class IdentiteService {
   constructor(private httpClient: HttpClient) { }
 
   public createIdentite1(identite: any): Observable<any> {
-
-    // let headers = new HttpHeaders({
-    //   'Content-Type': 'application/json;charset=UTF-8'
-    // });
-    // let options = {
-    //   headers: headers
-    // }
-
-    // const body = JSON.stringify({ identite: identite });
-
-    // this.httpClient.post(`${this.baseUrl1}`, body, options)
-    //   .subscribe(data => {
-    //     console.log(data);
-    //   });
-
-    // return this.httpClient.get(`${this.baseUrl1}`, {
-    //   headers: new HttpHeaders({
-    //     'Authorization': '{data}',
-    //     'Content-Type': 'application/json',
-    //   }), responseType: 'blob'
-    // })
-
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json;charset=UTF-8' })
     };
